@@ -3,14 +3,17 @@ package com.picpay.desafio.android
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
+import com.picpay.desafio.android.RecyclerViewMatchers.checkRecyclerViewItem
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 
 
@@ -19,6 +22,17 @@ class MainActivityTest {
     private val server = MockWebServer()
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+    @Before
+    fun registerCountingIdleResource(){
+        IdlingRegistry.getInstance().register(CountingIdleResource.countingIdlingResource)
+    }
+
+    @After
+    fun unregisterCountingIdleResource(){
+        IdlingRegistry.getInstance().unregister(CountingIdleResource.countingIdlingResource)
+    }
+
 
     @Test
     fun shouldDisplayTitle() {
@@ -45,7 +59,11 @@ class MainActivityTest {
         server.start(serverPort)
 
         launchActivity<MainActivity>().apply {
-            // TODO("validate if list displays items returned by server")
+            checkRecyclerViewItem(
+                resId = R.id.recyclerView,
+                position = 0,
+                withMatcher = withId(R.id.username)
+            )
         }
 
         server.close()

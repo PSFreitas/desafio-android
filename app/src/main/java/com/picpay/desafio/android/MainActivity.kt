@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         progressBar.visibility = View.VISIBLE
+
+        CountingIdleResource.increment()
         service.getUsers()
             .enqueue(object : Callback<List<User>> {
                 override fun onFailure(call: Call<List<User>>, t: Throwable) {
@@ -69,6 +71,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     progressBar.visibility = View.GONE
 
                     adapter.users = response.body()!!
+                    CountingIdleResource.decrement()
                 }
             })
     }
