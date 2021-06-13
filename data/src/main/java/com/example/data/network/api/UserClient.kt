@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.network
+package com.example.data.network.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -27,9 +27,7 @@ interface UserClient {
                 .build()
         }
 
-        val userService: UserService by lazy {
-            retrofit.create(UserService::class.java)
-        }
+        val userService: UserService by lazy { retrofit.create(UserService::class.java) }
 
 
     }

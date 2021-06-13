@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.picpay.desafio.android.network.UserClient
+import com.example.data.network.api.UserClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         progressBar.visibility = View.VISIBLE
 
         CountingIdleResource.increment()
-        UserClient.userService.getUsers()
-            .enqueue(object : Callback<List<User>> {
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
+        com.example.data.network.api.UserClient.userService.getUsers()
+            .enqueue(object : Callback<List<com.example.data.entity.User>> {
+                override fun onFailure(call: Call<List<com.example.data.entity.User>>, t: Throwable) {
                     val message = getString(R.string.error)
 
                     progressBar.visibility = View.GONE
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         .show()
                 }
 
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                override fun onResponse(call: Call<List<com.example.data.entity.User>>, response: Response<List<com.example.data.entity.User>>) {
                     progressBar.visibility = View.GONE
 
                     adapter.users = response.body()!!

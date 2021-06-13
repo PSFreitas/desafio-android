@@ -1,12 +1,12 @@
 package com.picpay.desafio.android
 
-import com.picpay.desafio.android.network.UserService
+import com.example.data.network.api.UserService
 
 class ExampleService(
-    private val service: UserService
+    private val service: com.example.data.network.api.UserService
 ) {
 
-    fun example(): List<User> {
+    fun example(): List<com.example.data.entity.User> {
         val users = service.getUsers().execute()
 
         return users.body() ?: emptyList()
