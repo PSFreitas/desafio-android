@@ -8,26 +8,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.data.UserRepositoryImpl
-import com.example.data.network.api.UserClient
 import com.picpay.desafio.android.databinding.ActivityMainBinding
 import com.picpay.desafio.android.valuableobject.Status
 import com.picpay.desafio.android.viewmodel.MainViewModel
 import com.picpay.desafio.android.viewmodel.MainViewModelFactory
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
     private val adapter: UserListAdapter = UserListAdapter()
 
-    private val mainViewModel by lazy {
-        ViewModelProvider(
-            this,
-            MainViewModelFactory(
-                UserRepositoryImpl(
-                    userApi = UserClient.userService
-                )
-            )
-        ).get(MainViewModel::class.java)
-    }
+    private val mainViewModel : MainViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

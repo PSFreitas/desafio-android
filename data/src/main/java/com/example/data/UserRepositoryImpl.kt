@@ -8,7 +8,7 @@ import com.example.domain.repository.UserRepository
 
 class UserRepositoryImpl(
     private val userApi: UserService,
-    private val userListMapper: UserListMapper = UserListMapper()
+    private val userListMapper: UserListMapper
 ) : UserRepository {
 
     override suspend fun getUsers(): ResultData<List<UserEntity>> {
