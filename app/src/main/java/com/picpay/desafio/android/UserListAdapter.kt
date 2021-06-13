@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.data.entity.UserNetworkEntity
-import com.example.domain.entity.UserEntity
+import com.picpay.desafio.android.entity.UserViewEntity
 
 class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
 
-    var users = emptyList<UserEntity>()
+    var users = emptyList<UserViewEntity>()
         set(value) {
             val result = DiffUtil.calculateDiff(
                 UserListDiffCallback(

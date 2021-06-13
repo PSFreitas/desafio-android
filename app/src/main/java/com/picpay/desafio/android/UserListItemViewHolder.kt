@@ -3,6 +3,7 @@ package com.picpay.desafio.android
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entity.UserEntity
+import com.picpay.desafio.android.entity.UserViewEntity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_user.view.*
@@ -11,7 +12,7 @@ class UserListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(user: UserEntity) {
+    fun bind(user: UserViewEntity) {
         itemView.name.text = user.name
         itemView.username.text = user.username
         itemView.progressBar.visibility = View.VISIBLE
