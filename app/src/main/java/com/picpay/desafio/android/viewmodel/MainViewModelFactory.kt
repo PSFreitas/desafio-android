@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.data.UserRepositoryImpl
 
-@Suppress("UNCHECKED_CAST")
 class MainViewModelFactory(
     private val userRepositoryImpl: UserRepositoryImpl
 ) : ViewModelProvider.Factory {
