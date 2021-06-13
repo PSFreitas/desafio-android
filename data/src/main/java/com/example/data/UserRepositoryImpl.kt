@@ -12,7 +12,7 @@ class UserRepositoryImpl(
 ) : UserRepository {
 
     override suspend fun getUsers(): ResultData<List<UserEntity>> {
-        val response = userApi.getUsersResponse()
+        val response = userApi.getUsers()
 
         return if (response.isSuccessful) {
             ResultData.Success(userListMapper.map(response.body() ?: emptyList()))

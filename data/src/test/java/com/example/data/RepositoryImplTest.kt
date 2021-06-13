@@ -24,7 +24,7 @@ class RepositoryImplTest {
     fun `should return success with empty list when body is null`() {
         runBlocking {
 
-            whenever(api.getUsersResponse()).thenReturn(Response.success(null))
+            whenever(api.getUsers()).thenReturn(Response.success(null))
             val success = repository.getUsers() as ResultData.Success
 
             assertNotNull(success)
@@ -36,7 +36,7 @@ class RepositoryImplTest {
     fun `should return success with empty list when body is empty`() {
         runBlocking {
 
-            whenever(api.getUsersResponse()).thenReturn(Response.success(emptyList()))
+            whenever(api.getUsers()).thenReturn(Response.success(emptyList()))
             val success = repository.getUsers() as ResultData.Success
 
             assertNotNull(success)
@@ -48,7 +48,7 @@ class RepositoryImplTest {
     fun `should return success with filled list when body is not empty`() {
         runBlocking {
 
-            whenever(api.getUsersResponse()).thenReturn(
+            whenever(api.getUsers()).thenReturn(
                 Response.success(
                     listOf(
                         UserNetworkEntity(
@@ -69,7 +69,7 @@ class RepositoryImplTest {
     @Test
     fun `should return error if request fails`() {
         runBlocking {
-            whenever(api.getUsersResponse()).thenReturn(
+            whenever(api.getUsers()).thenReturn(
                 Response.error(
                     404,
                     "{ \"error\": 404 }".toResponseBody("application/json".toMediaTypeOrNull())

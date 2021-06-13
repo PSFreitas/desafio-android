@@ -20,9 +20,9 @@ class UserServiceTest {
         val expectedUsers = emptyList<UserNetworkEntity>()
 
         runBlocking {
-            whenever(api.getUsersResponse()).thenReturn(Response.success(expectedUsers))
+            whenever(api.getUsers()).thenReturn(Response.success(expectedUsers))
 
-            val users = api.getUsersResponse().body()
+            val users = api.getUsers().body()
 
             assertEquals(users, expectedUsers)
         }
