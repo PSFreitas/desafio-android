@@ -2,7 +2,7 @@ package com.example.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class UserNetworkEntity(
     @SerializedName("img") val img: String,
     @SerializedName("name") val name: String,
     @SerializedName("id") val id: Int,

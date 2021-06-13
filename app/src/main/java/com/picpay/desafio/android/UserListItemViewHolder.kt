@@ -10,7 +10,7 @@ class UserListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(user: com.example.data.entity.User) {
+    fun bind(user: com.example.data.entity.UserNetworkEntity) {
         itemView.name.text = user.name
         itemView.username.text = user.username
         itemView.progressBar.visibility = View.VISIBLE
