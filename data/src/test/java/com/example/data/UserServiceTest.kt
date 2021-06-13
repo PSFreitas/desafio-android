@@ -5,6 +5,7 @@ import com.example.data.network.api.UserService
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import retrofit2.Response
 
@@ -18,10 +19,12 @@ class UserServiceTest {
 
         val expectedUsers = emptyList<UserNetworkEntity>()
 
-        whenever(api.getUsersResponse()).thenReturn(Response.success(expectedUsers))
+        runBlocking {
+            whenever(api.getUsersResponse()).thenReturn(Response.success(expectedUsers))
 
-        val users = api.getUsersResponse().body()
+            val users = api.getUsersResponse().body()
 
-        assertEquals(users, expectedUsers)
+            assertEquals(users, expectedUsers)
+        }
     }
 }
