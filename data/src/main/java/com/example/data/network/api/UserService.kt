@@ -12,5 +12,5 @@ interface UserService {
     fun getUsers(): Call<List<UserNetworkEntity>>
 
     @GET("users")
-    fun getUsersResponse(): Response<List<UserNetworkEntity>>
+    suspend fun getUsersResponse(): Response<List<UserNetworkEntity>>
 }

@@ -4,5 +4,5 @@ import com.example.domain.ResultData
 import com.example.domain.entity.UserEntity
 
 interface UserRepository {
-    fun getUsers(): ResultData<List<UserEntity>>
+    suspend fun getUsers(): ResultData<List<UserEntity>>
 }
