@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.data.entity.UserNetworkEntity
+import com.example.domain.entity.UserEntity
 
 class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
 
-    var users = emptyList<UserNetworkEntity>()
+    var users = emptyList<UserEntity>()
         set(value) {
             val result = DiffUtil.calculateDiff(
                 UserListDiffCallback(
