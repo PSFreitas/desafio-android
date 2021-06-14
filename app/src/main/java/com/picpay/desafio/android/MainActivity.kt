@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
             it.viewModel = mainViewModel
             it.lifecycleOwner = this
 
-            it.recyclerView.adapter = adapter
-            it.recyclerView.layoutManager = LinearLayoutManager(this)
+            it.recyclerViewUsers.adapter = adapter
+            it.recyclerViewUsers.layoutManager = LinearLayoutManager(this)
         }
 
         setupObservables()

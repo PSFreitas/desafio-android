@@ -60,9 +60,9 @@ class MainActivityTest {
 
         launchActivity<MainActivity>().apply {
             checkRecyclerViewItem(
-                resId = R.id.recyclerView,
+                resId = R.id.recyclerView_users,
                 position = 0,
-                withMatcher = withId(R.id.username)
+                withMatcher = withId(R.id.textView_username)
             )
         }
 
