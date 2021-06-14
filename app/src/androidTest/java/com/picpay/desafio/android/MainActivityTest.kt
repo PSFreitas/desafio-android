@@ -62,7 +62,7 @@ class MainActivityTest {
             checkRecyclerViewItem(
                 resId = R.id.recyclerView,
                 position = 0,
-                withMatcher = withId(R.id.username)
+                withMatcher = withId(R.id.textView_username)
             )
         }
 
